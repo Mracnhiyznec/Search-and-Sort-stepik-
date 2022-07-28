@@ -1,0 +1,37 @@
+#python
+n = int(input())
+Flag = False
+s = [int(i) for i in input().split()]
+x = int(input())
+for i in s:
+    if x == i:
+        Flag = True
+if Flag == True:
+    print("YES")
+else:
+    print("NO")
+
+#С++
+#include <iostream>
+using namespace std;
+int main(){
+    int a, x, flag = 0;
+    cin >> a;
+    int array[a];
+    for (int i = 0; i < a; i++){
+        cin >> array[i];
+    }
+    cin >> x;
+    for (int i = 0; i <a; i++){
+        if (array[i] == x){
+            flag = 1;
+        }
+    }
+    if (flag == 1){
+        cout << "YES";
+    }
+    else{
+        cout << "NO";
+    }
+    return 0;
+}
