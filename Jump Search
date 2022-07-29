@@ -1,0 +1,56 @@
+#Python
+import math
+def JumpSearch(array, x):
+    length = len(array)
+    B = int(math.sqrt(length)) # вычисляем размер наиболее удачного блока(прыжка)
+    start = 0 # начальная позиция блока
+    end = B - 1 # конечная позиция блока
+    while (array[end] < x): # пока конец блока меньше искомого элемента
+        if (end == length - 1): # если дошли до конца массива, выходим
+            break
+        start = min(length - 1, start + B) # перемещаем начало блока в право
+        end = min(length - 1, end + B) # перемещаем конец блока в право
+    if (x > array[end]):
+        return -1 # если искомый элемент больше, чем последний элемент блока, значит не нашли нужный элемент
+    for i in range(end, start - 1, -1):
+        if array[i] == x:
+            return i
+    return -1
+
+#C++
+#include <iostream>
+#include <cmath>
+using namespace std;
+int JumpSearh(int array[], int x, int p){
+    int length = p;
+    int B = (int)sqrt(length);
+    int start = 0;
+    int end = B - 1;
+    while(array[end] < x){
+        if (end == length - 1){
+            break;
+        }
+        start = min(length - 1, start + B);
+        end = min(length - 1, end + B);
+    }
+    if (x > array[end]){
+        return -1;
+    }
+    for(int i = end; i >= start; i--){
+        if (array[i] == x){
+            return i;
+        }
+    }
+    return -1;
+}
+int main(){
+        int a, x;
+        cin >> a;
+        int array[a];
+        for (int i = 0; i < a; i++){
+            cin >> array[i];
+        }
+        cin >> x;
+        cout << JumpSearh(array, x, a);
+    return 0;
+}
