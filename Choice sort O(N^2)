@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <map>
+#include <vector>
+using namespace std;
+void choice_sort(int array[], int length) {
+    for (int i = length - 1; i > 0; i--){
+        int maxiindex = i;
+        for (int j = 0; j < i; j++){
+            if (array[j] > array[maxiindex]){
+                maxiindex = j;
+            }
+        }
+        if (array[maxiindex] != array[i]){
+            int temp = array[i];
+            array[i] = array[maxiindex];
+            array[maxiindex] = temp;
+        }
+    }
+}
+int main(){
+    int a;
+    cin >> a;
+    int array[a];
+    for (int i = 0; i < a; i++){
+        cin >> array[i];
+    }
+    choice_sort(array, a);
+    for (int i = 0; i < a; i++){
+        cout << array[i] << " ";
+    }
+    return 0;
+}
